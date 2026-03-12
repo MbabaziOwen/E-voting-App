@@ -27,4 +27,4 @@ class Voter:
     def from_dict(cls, d):
         obj = cls.__new__(cls)
         obj.__dict__.update(d)
-        return obj
+        return obj 
