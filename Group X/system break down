@@ -1,0 +1,28 @@
+evoting/
+├── main.py                  # Entry point only
+├── data/
+│   └── evoting_data.json    # Persisted data
+├── models/
+│   ├── candidate.py         # Candidate class
+│   ├── voter.py             # Voter class
+│   ├── admin.py             # Admin class
+│   ├── poll.py              # Poll class
+│   ├── position.py          # Position class
+│   ├── station.py           # VotingStation class
+│   └── vote.py              # Vote class
+├── services/
+│   ├── auth_service.py      # Login logic
+│   ├── candidate_service.py # Candidate CRUD
+│   ├── voter_service.py     # Voter management
+│   ├── poll_service.py      # Poll + position logic
+│   ├── station_service.py   # Station CRUD
+│   ├── vote_service.py      # Ballot casting + results
+│   └── admin_service.py     # Admin management
+├── ui/
+│   ├── display.py           # All print/color/header functions
+│   ├── admin_ui.py          # Admin dashboard + menus
+│   └── voter_ui.py          # Voter dashboard + menus
+├── storage/
+│   └── data_store.py        # save_data / load_data + all global state
+└── utils/
+    └── helpers.py           # hash_password, generate_card, audit log
