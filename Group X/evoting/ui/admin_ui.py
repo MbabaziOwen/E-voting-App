@@ -107,12 +107,12 @@ class AdminUI:
             elif choice == "28": self.vote_svc.view_statistics()
             elif choice == "29": self.adm_svc.view_audit_log()
             elif choice == "30": self.vote_svc.station_wise_results()
-            elif choice == "31": self.store.save(); pause()
+            elif choice == "31": self.store.save_data(); pause()
             elif choice == "32":
                 from utils.helpers import log_action
-                log_action(self.store.audit_log, "LOGOUT",
-                current_user["username"], "Admin logged out")
-                self.store.save()
+                log_action(self.store, "LOGOUT",
+                           current_user["username"], "Admin logged out")
+                self.store.save_data()
                 break
             else:
                 error("Invalid choice.")

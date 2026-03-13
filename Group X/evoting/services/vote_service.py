@@ -153,14 +153,14 @@ class VoteService:
             if v["id"] == current_user["id"]:
                 v["has_voted_in"].append(pid)
                 break
-        log_action(self.store.audit_log, "CAST_VOTE",
+        log_action(self.store, "CAST_VOTE",
                    current_user["voter_card_number"],
                    f"Voted in poll: {poll['title']} (Hash: {vote_hash})")
         print()
         success("Your vote has been recorded successfully!")
         print(f"  {DIM}Vote Reference:{RESET} {BRIGHT_YELLOW}{vote_hash}{RESET}")
         print(f"  {BRIGHT_CYAN}Thank you for participating in the democratic process!{RESET}")
-        self.store.save()
+        self.store.save_data()
         pause()
 
     def view_voting_history(self, current_user):

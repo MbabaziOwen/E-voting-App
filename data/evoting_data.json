@@ -1,0 +1,46 @@
+{
+  "candidates": {},
+  "voters": {},
+  "admins": {
+    "1": {
+      "id": 1,
+      "username": "admin",
+      "password": "240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9",
+      "full_name": "System Administrator",
+      "email": "admin@evote.com",
+      "role": "super_admin",
+      "created_at": "2026-03-13 22:41:06.749904",
+      "is_active": true
+    }
+  },
+  "polls": {},
+  "positions": {},
+  "voting_stations": {},
+  "votes": [],
+  "audit_log": [
+    {
+      "timestamp": "2026-03-13 22:41:44.567897",
+      "action": "LOGIN_FAILED",
+      "user": "owen",
+      "details": "Invalid admin credentials"
+    },
+    {
+      "timestamp": "2026-03-13 22:41:50.267704",
+      "action": "LOGIN",
+      "user": "admin",
+      "details": "Admin login successful"
+    },
+    {
+      "timestamp": "2026-03-13 22:41:55.385031",
+      "action": "LOGOUT",
+      "user": "admin",
+      "details": "Admin logged out"
+    }
+  ],
+  "candidate_id_counter": 1,
+  "voter_id_counter": 1,
+  "admin_id_counter": 2,
+  "poll_id_counter": 1,
+  "position_id_counter": 1,
+  "station_id_counter": 1
+}

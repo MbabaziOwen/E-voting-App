@@ -25,17 +25,17 @@ def pause():
     input("\n  Press Enter to continue...")
 
 
-def log_action(audit_log: list, action: str, user: str, details: str):
+def log_action(store, action: str, user: str, details: str):
     """
-    Append an audit record to the audit_log list.
+    Append an audit record to the audit_log list in the DataStore.
 
     Parameters:
-        audit_log : the list from DataStore.audit_log
-        action    : short action name e.g. "LOGIN", "CREATE_CANDIDATE"
-        user      : username or voter card number of the person acting
-        details   : human-readable description of what happened
+        store   : DataStore instance containing the audit_log
+        action  : short action name e.g. "LOGIN", "CREATE_CANDIDATE"
+        user    : username or voter card number of the person acting
+        details : human-readable description of what happened
     """
-    audit_log.append({
+    store.audit_log.append({
         "timestamp": str(datetime.datetime.now()),
         "action":    action,
         "user":      user,

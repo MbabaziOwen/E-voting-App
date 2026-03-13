@@ -69,13 +69,13 @@ class AdminService:
             "created_at": str(datetime.datetime.now()),
             "is_active":  True
         }
-        log_action(self.store.audit_log, "CREATE_ADMIN",
+        log_action(self.store, "CREATE_ADMIN",
                    current_user["username"],
                    f"Created admin: {username} (Role: {role})")
         print()
         success(f"Admin '{username}' created with role: {role}")
         self.store.admin_id_counter += 1
-        self.store.save()
+        self.store.save_data()
         pause()
 
     def view_all(self):
@@ -121,12 +121,12 @@ class AdminService:
             return
         if prompt(f"Deactivate '{self.store.admins[aid]['username']}'? (yes/no): ").lower() == "yes":
             self.store.admins[aid]["is_active"] = False
-            log_action(self.store.audit_log, "DEACTIVATE_ADMIN",
+            log_action(self.store, "DEACTIVATE_ADMIN",
                        current_user["username"],
                        f"Deactivated admin: {self.store.admins[aid]['username']}")
             print()
             success("Admin deactivated.")
-            self.store.save()
+            self.store.save_data()
         pause()
 
     def view_audit_log(self):

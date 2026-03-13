@@ -35,7 +35,7 @@ class AuthService:
         elif choice == "4":
             print()
             info("Goodbye!")
-            self.store.save()
+            self.store.save_data()
             exit()
         else:
             error("Invalid choice.")
@@ -53,18 +53,18 @@ class AuthService:
             if admin["username"] == username and admin["password"] == hashed:
                 if not admin["is_active"]:
                     error("This account has been deactivated.")
-                    log_action(self.store.audit_log, "LOGIN_FAILED",
+                    log_action(self.store, "LOGIN_FAILED",
                                username, "Account deactivated")
                     pause()
                     return (None, None)
-                log_action(self.store.audit_log, "LOGIN",
+                log_action(self.store, "LOGIN",
                            username, "Admin login successful")
                 print()
                 success(f"Welcome, {admin['full_name']}!")
                 pause()
                 return (admin, "admin")
         error("Invalid credentials.")
-        log_action(self.store.audit_log, "LOGIN_FAILED",
+        log_action(self.store, "LOGIN_FAILED",
                    username, "Invalid admin credentials")
         pause()
         return (None, None)
@@ -80,25 +80,25 @@ class AuthService:
             if voter["voter_card_number"] == voter_card and voter["password"] == hashed:
                 if not voter["is_active"]:
                     error("This voter account has been deactivated.")
-                    log_action(self.store.audit_log, "LOGIN_FAILED",
+                    log_action(self.store, "LOGIN_FAILED",
                                voter_card, "Voter account deactivated")
                     pause()
                     return (None, None)
                 if not voter["is_verified"]:
                     warning("Your voter registration has not been verified yet.")
                     info("Please contact an admin to verify your registration.")
-                    log_action(self.store.audit_log, "LOGIN_FAILED",
+                    log_action(self.store, "LOGIN_FAILED",
                                voter_card, "Voter not verified")
                     pause()
                     return (None, None)
-                log_action(self.store.audit_log, "LOGIN",
+                log_action(self.store, "LOGIN",
                            voter_card, "Voter login successful")
                 print()
                 success(f"Welcome, {voter['full_name']}!")
                 pause()
                 return (voter, "voter")
         error("Invalid voter card number or password.")
-        log_action(self.store.audit_log, "LOGIN_FAILED",
+        log_action(self.store, "LOGIN_FAILED",
                    voter_card, "Invalid voter credentials")
         pause()
         return (None, None)
@@ -191,7 +191,7 @@ class AuthService:
             "registered_at":    str(datetime.datetime.now()),
             "role":             "voter"
         }
-        log_action(self.store.audit_log, "REGISTER",
+        log_action(self.store, "REGISTER",
                    full_name, f"New voter registered with card: {voter_card}")
         print()
         success("Registration successful!")
@@ -199,5 +199,5 @@ class AuthService:
         warning("IMPORTANT: Save this number! You need it to login.")
         info("Your registration is pending admin verification.")
         self.store.voter_id_counter += 1
-        self.store.save()
+        self.store.save_data()
         pause()

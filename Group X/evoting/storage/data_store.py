@@ -72,7 +72,7 @@ class DataStore:
 
     # ── Persistence 
 
-    def save(self):
+    def save_data(self):  # CHANGED: from save() to save_data()
         """
         Write the entire application state to data/evoting_data.json.
         Called after every action that modifies data.

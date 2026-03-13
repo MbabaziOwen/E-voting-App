@@ -45,9 +45,9 @@ class VoterUI:
             elif choice == "5": self._view_profile(current_user)
             elif choice == "6": self._change_password(current_user)
             elif choice == "7":
-                log_action(self.store.audit_log, "LOGOUT",
+                log_action(self.store, "LOGOUT",
                            current_user["voter_card_number"], "Voter logged out")
-                self.store.save()
+                self.store.save_data()
                 break
             else:
                 error("Invalid choice.")
@@ -104,9 +104,9 @@ class VoterUI:
             if v["id"] == current_user["id"]:
                 v["password"] = hash_password(new_pass)
                 break
-        log_action(self.store.audit_log, "CHANGE_PASSWORD",
-                current_user["voter_card_number"], "Password changed")
+        log_action(self.store, "CHANGE_PASSWORD",
+                   current_user["voter_card_number"], "Password changed")
         print()
         success("Password changed successfully!")
-        self.store.save()
+        self.store.save_data()
         pause()

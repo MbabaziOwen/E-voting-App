@@ -1,10 +1,11 @@
 class VotingStation:
-    def __init__(self, id, anme, location, region, capacity, supervisor, contact, opening_time, closing_time, created_by="", created_at=""):
+    def __init__(self, id, name, location, region, capacity, supervisor, contact, opening_time, closing_time, created_by="", created_at=""):
         self.id = id
-        self.name = self.name
+        self.name = name  # Fixed typo
         self.location = location
         self.region = region
         self.capacity = capacity
+        self.registered_voters = 0  # Added missing attribute
         self.supervisor = supervisor
         self.contact = contact
         self.opening_time = opening_time
@@ -17,7 +18,7 @@ class VotingStation:
         return self.__dict__
     
     @classmethod
-    def from_dict(cls,d):
+    def from_dict(cls, d):  # Added space after comma
         obj = cls.__new__(cls)
         obj.__dict__.update(d)
         return obj

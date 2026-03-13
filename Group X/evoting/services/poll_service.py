@@ -3,7 +3,7 @@ import datetime
 from storage.data_store import DataStore
 from ui.display import (
     clear_screen, header, subheader, prompt, error, success,
-    warning, info, pause, menu_item, status_badge,
+    warning, info, pause, menu_item, status_badge, table_header, table_divider,
     THEME_ADMIN, THEME_ADMIN_ACCENT, BOLD, DIM, RESET,
     GREEN, YELLOW, RED, BRIGHT_YELLOW
 )
@@ -54,13 +54,13 @@ class PollService:
             "created_at":       str(datetime.datetime.now()),
             "created_by":       current_user["username"]
         }
-        log_action(self.store.audit_log, "CREATE_POSITION",
+        log_action(self.store, "CREATE_POSITION",
                    current_user["username"],
                    f"Created position: {title} (ID: {self.store.position_id_counter})")
         print()
         success(f"Position '{title}' created! ID: {self.store.position_id_counter}")
         self.store.position_id_counter += 1
-        self.store.save()
+        self.store.save_data()
         pause()
 
     def view_positions(self):
@@ -72,7 +72,6 @@ class PollService:
             pause()
             return
         print()
-        from ui.display import table_header, table_divider
         table_header(f"{'ID':<5} {'Title':<25} {'Level':<12} {'Seats':<8} {'Min Age':<10} {'Status':<10}", THEME_ADMIN)
         table_divider(70, THEME_ADMIN)
         for pid, p in self.store.positions.items():
@@ -118,11 +117,11 @@ class PollService:
                 p["max_winners"] = int(new_seats)
             except ValueError:
                 warning("Keeping old value.")
-        log_action(self.store.audit_log, "UPDATE_POSITION",
+        log_action(self.store, "UPDATE_POSITION",
                    current_user["username"], f"Updated position: {p['title']}")
         print()
         success("Position updated!")
-        self.store.save()
+        self.store.save_data()
         pause()
 
     def delete_position(self, current_user):
@@ -154,12 +153,12 @@ class PollService:
                     return
         if prompt(f"Confirm deactivation of '{self.store.positions[pid]['title']}'? (yes/no): ").lower() == "yes":
             self.store.positions[pid]["is_active"] = False
-            log_action(self.store.audit_log, "DELETE_POSITION",
+            log_action(self.store, "DELETE_POSITION",
                        current_user["username"],
                        f"Deactivated position: {self.store.positions[pid]['title']}")
             print()
             success("Position deactivated.")
-            self.store.save()
+            self.store.save_data()
         pause()
 
     # ── Polls ────────────────────────────────────────────────────
@@ -252,14 +251,14 @@ class PollService:
             "created_at":       str(datetime.datetime.now()),
             "created_by":       current_user["username"]
         }
-        log_action(self.store.audit_log, "CREATE_POLL",
+        log_action(self.store, "CREATE_POLL",
                    current_user["username"],
                    f"Created poll: {title} (ID: {self.store.poll_id_counter})")
         print()
         success(f"Poll '{title}' created! ID: {self.store.poll_id_counter}")
         warning("Status: DRAFT - Assign candidates and then open the poll.")
         self.store.poll_id_counter += 1
-        self.store.save()
+        self.store.save_data()
         pause()
 
     def view_all(self):
@@ -337,11 +336,11 @@ class PollService:
                 poll["end_date"] = new_end
             except ValueError:
                 warning("Invalid date, keeping old value.")
-        log_action(self.store.audit_log, "UPDATE_POLL",
+        log_action(self.store, "UPDATE_POLL",
                    current_user["username"], f"Updated poll: {poll['title']}")
         print()
         success("Poll updated!")
-        self.store.save()
+        self.store.save_data()
         pause()
 
     def delete(self, current_user):
@@ -375,11 +374,11 @@ class PollService:
             deleted_title = self.store.polls[pid]["title"]
             del self.store.polls[pid]
             self.store.votes = [v for v in self.store.votes if v["poll_id"] != pid]
-            log_action(self.store.audit_log, "DELETE_POLL",
+            log_action(self.store, "DELETE_POLL",
                        current_user["username"], f"Deleted poll: {deleted_title}")
             print()
             success(f"Poll '{deleted_title}' deleted.")
-            self.store.save()
+            self.store.save_data()
         pause()
 
     def open_close(self, current_user):
@@ -412,28 +411,28 @@ class PollService:
                 return
             if prompt(f"Open poll '{poll['title']}'? Voting will begin. (yes/no): ").lower() == "yes":
                 poll["status"] = "open"
-                log_action(self.store.audit_log, "OPEN_POLL",
+                log_action(self.store, "OPEN_POLL",
                            current_user["username"], f"Opened poll: {poll['title']}")
                 print()
                 success(f"Poll '{poll['title']}' is now OPEN for voting!")
-                self.store.save()
+                self.store.save_data()
         elif poll["status"] == "open":
             if prompt(f"Close poll '{poll['title']}'? No more votes accepted. (yes/no): ").lower() == "yes":
                 poll["status"] = "closed"
-                log_action(self.store.audit_log, "CLOSE_POLL",
+                log_action(self.store, "CLOSE_POLL",
                            current_user["username"], f"Closed poll: {poll['title']}")
                 print()
                 success(f"Poll '{poll['title']}' is now CLOSED.")
-                self.store.save()
+                self.store.save_data()
         elif poll["status"] == "closed":
             info("This poll is already closed.")
             if prompt("Reopen it? (yes/no): ").lower() == "yes":
                 poll["status"] = "open"
-                log_action(self.store.audit_log, "REOPEN_POLL",
+                log_action(self.store, "REOPEN_POLL",
                            current_user["username"], f"Reopened poll: {poll['title']}")
                 print()
                 success("Poll reopened!")
-                self.store.save()
+                self.store.save_data()
         pause()
 
     def assign_candidates(self, current_user):
@@ -501,8 +500,8 @@ class PollService:
                     success(f"{len(valid_ids)} candidate(s) assigned.")
                 except ValueError:
                     error("Invalid input. Skipping this position.")
-        log_action(self.store.audit_log, "ASSIGN_CANDIDATES",
+        log_action(self.store, "ASSIGN_CANDIDATES",
                    current_user["username"],
                    f"Updated candidates for poll: {poll['title']}")
-        self.store.save()
+        self.store.save_data()
         pause()

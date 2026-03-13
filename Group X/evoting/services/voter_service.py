@@ -68,22 +68,22 @@ class VoterService:
                 pause()
                 return
             self.store.voters[vid]["is_verified"] = True
-            log_action(self.store.audit_log, "VERIFY_VOTER",
+            log_action(self.store, "VERIFY_VOTER",
                        current_user["username"],
                        f"Verified voter: {self.store.voters[vid]['full_name']}")
             print()
             success(f"Voter '{self.store.voters[vid]['full_name']}' verified!")
-            self.store.save()
+            self.store.save_data()
         elif choice == "2":
             count = 0
             for vid in unverified:
                 self.store.voters[vid]["is_verified"] = True
                 count += 1
-            log_action(self.store.audit_log, "VERIFY_ALL_VOTERS",
+            log_action(self.store, "VERIFY_ALL_VOTERS",
                        current_user["username"], f"Verified {count} voters")
             print()
             success(f"{count} voters verified!")
-            self.store.save()
+            self.store.save_data()
         pause()
 
     def deactivate(self, current_user):
@@ -111,12 +111,12 @@ class VoterService:
             return
         if prompt(f"Deactivate '{self.store.voters[vid]['full_name']}'? (yes/no): ").lower() == "yes":
             self.store.voters[vid]["is_active"] = False
-            log_action(self.store.audit_log, "DEACTIVATE_VOTER",
+            log_action(self.store, "DEACTIVATE_VOTER",
                        current_user["username"],
                        f"Deactivated voter: {self.store.voters[vid]['full_name']}")
             print()
             success("Voter deactivated.")
-            self.store.save()
+            self.store.save_data()
         pause()
 
     def search(self):
