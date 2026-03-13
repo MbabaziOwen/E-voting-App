@@ -8,15 +8,6 @@ We had to breakdown this monolith into a proper modular Python project while kee
 # HOW WE HANDLED THE TASK.
 We split the work based on natural boundaries in the system:
 
-Owen took the foundation - the data storage and main entry point. Which basically means that he built the backbone that everyone else depends on.
-
-Aturinda handled all the data models. She created classes for Candidates, Voters, Admins, Polls, Positions, Voting Stations, and Votes.
-
-Anthony focused on core services - authentication, candidate management, and station management. These are the basic CRUD operations.
-
-Danny handled the- poll lifecycle, voting logic, results calculation, and admin management. 
-
-Kirabo did the UI  - the display helpers, admin dashboard, voter dashboard, and this README.
 
 # How We Organized the Code
 Here's what our project folder looks like:
