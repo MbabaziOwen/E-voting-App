@@ -128,7 +128,7 @@ python main.py
 
 | Person | Role | Files |
 |------|------|-------|
-| Owen | Foundation Lead | helpers.py, data_store.py, main.py |
+| Owen | Foundation Lead | helpers.py, data_store.py, main.py, error handling and combining all the code into the right files|
 | Aturinda | Models Lead | All model files (admin.py, candidate.py, poll.py, position.py, station.py, vote.py, voter.py) |
 | Anthony | Core Services | auth_service.py, candidate_service.py, station_service.py |
 | Danny | Poll & Vote Services | poll_service.py, vote_service.py, voter_service.py, admin_service.py |
