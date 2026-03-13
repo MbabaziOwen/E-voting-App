@@ -12,7 +12,7 @@ We split the work based on natural boundaries in the system:
 * Aturinda took lead on the Models.
 * Anthony took point on the Core Services.
 * Danny handled the Poll and Voter Services.
-* Kirabo Handles the UI & Display.
+* Kirabo Handled the UI & Display.
 
 
 # How We Organized the Code
