@@ -9,7 +9,7 @@ import hashlib
 import random
 import string
 
-from AnthonysCodeEdits.services.auth_service import AuthService
+from AnthonysCodeEdits.class_services.auth_service import AuthService
 
 
 # --- utility helpers ---

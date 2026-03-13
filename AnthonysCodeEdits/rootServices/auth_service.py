@@ -1,7 +1,7 @@
 """Legacy auth helpers in root services package.
 
 These simply forward to the class-based implementation in
-``AnthonysCodeEdits.services.auth_service`` and thus never touch global
+``AnthonysCodeEdits.class_services.auth_service`` and thus never touch global
 state or call ``save_data``/``log_action`` directly. The module also exposes
 the original utility functions for compatibility.
 """
@@ -10,7 +10,7 @@ import hashlib
 import random
 import string
 
-from AnthonysCodeEdits.services.auth_service import AuthService
+from AnthonysCodeEdits.class_services.auth_service import AuthService
 
 
 def hash_password(password):

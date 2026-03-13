@@ -5,7 +5,7 @@ actual work is performed by ``StationService`` so there are no direct global
 accesses or raw ``save_data`` calls here.
 """
 
-from AnthonysCodeEdits.services.station_service import StationService
+from AnthonysCodeEdits.class_services.station_service import StationService
 
 
 def create_voting_station(store, current_user=None):
