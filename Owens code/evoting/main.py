@@ -5,7 +5,7 @@ import os
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from storage.data_store    import DataStore
-from services.auth_service import AuthService
+from ...AnthonysCodeEdits.rootServices.auth_service import AuthService
 from ui.admin_ui           import AdminUI
 from ui.voter_ui           import VoterUI
 
