@@ -20,17 +20,17 @@ def main():
     4. Loops forever: show login -> route to correct dashboard -> repeat
     """
 
-    # ── 1. Create and load the data store ───────────────────────
+    # ── 1. Create and load the data store 
     store = DataStore()
     store.load()
 
-    # ── 2. Create services and UI handlers ──────────────────────
-    # All receive the SAME store instance so they share data
+    # ── 2. Create services and UI handlers 
+    # All receive the same store instance so they share data
     auth      = AuthService(store)
     admin_ui  = AdminUI(store)
     voter_ui  = VoterUI(store)
 
-    # ── 3. Main application loop ─────────────────────────────────
+    # ── 3. Main application loop 
     while True:
         # Show login screen — returns (user_dict, role_string)
         # or (None, None) if login failed / user chose to exit
