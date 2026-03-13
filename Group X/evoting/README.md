@@ -8,15 +8,19 @@ We had to breakdown this monolith into a proper modular Python project while kee
 # HOW WE HANDLED THE TASK.
 We split the work based on natural boundaries in the system:
 
-Owen took the foundation lead.
-Aturinda took lead on the Models.
-Anthony took point on the Core Services.
-Danny handled the Poll and Voter Services.
-Kirabo Handles the UI & Display.
+* Owen took the foundation lead.
+* Aturinda took lead on the Models.
+* Anthony took point on the Core Services.
+* Danny handled the Poll and Voter Services.
+* Kirabo Handles the UI & Display.
 
 
 # How We Organized the Code
 Here's what our project folder looks like:
+
+ * -evoting/  
+      
+   
 
 
 
