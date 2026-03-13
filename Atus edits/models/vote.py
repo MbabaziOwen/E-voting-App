@@ -7,13 +7,14 @@ class Vote:
         self.voter_id = voter_id
         self.station_id = station_id
         self.timestamp = timestamp
-        self.abstained = abstained
+        self.abstained = abstained  #if the voter chose not to pick anyone
         
     def to_dict(self):
         return self.__dict__
     
     @classmethod
     def from_dict(cls, d):
+        #create a blank instance of the class without calling __init__
         obj = cls.__new__(cls)
         obj.__dict__.update(d)
         return obj
