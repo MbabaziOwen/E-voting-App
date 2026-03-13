@@ -18,3 +18,38 @@ Danny handled the- poll lifecycle, voting logic, results calculation, and admin 
 
 Kirabo did the UI  - the display helpers, admin dashboard, voter dashboard, and this README.
 
+# How We Organized the Code
+Here's what our project folder looks like:
+
+evoting/
+├── main.py                      # Where everything starts
+├── storage/
+│   └── data_store.py            # All data lives here
+├── utils/
+│   └── helpers.py               # Shared utility functions
+├── models/
+│   ├── admin.py                 # Admin user
+│   ├── candidate.py             # Election candidates
+│   ├── voter.py                 # Registered voters
+│   ├── poll.py                  # Elections
+│   ├── position.py              # Positions up for vote
+│   ├── station.py               # Voting locations
+│   └── vote.py                  # Individual ballots
+├── services/
+│   ├── auth_service.py          # Login and registration
+│   ├── candidate_service.py     # Manage candidates
+│   ├── station_service.py        # Manage stations
+│   ├── poll_service.py           # Poll lifecycle
+│   ├── vote_service.py           # Casting and results
+│   ├── voter_service.py          # Manage voters
+│   └── admin_service.py          # Manage admins
+├── ui/
+│   ├── display.py                # All the pretty colors and formatting
+│   ├── admin_ui.py                # Admin screens
+│   └── voter_ui.py                # Voter screens
+└── data/
+    └── evoting_data.json          # Where everything gets saved
+
+
+ 
+
