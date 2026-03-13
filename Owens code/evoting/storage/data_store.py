@@ -14,7 +14,7 @@ class DataStore:
     """
 
     def __init__(self):
-        # ── Core data dictionaries ───────────────────────────────
+        # ── Core data dictionaries 
         # Keys are integer IDs, values are plain dicts
         self.candidates      = {}
         self.voters          = {}
@@ -23,11 +23,11 @@ class DataStore:
         self.positions       = {}
         self.voting_stations = {}
 
-        # ── List storage ─────────────────────────────────────────
+        # ── List storage 
         self.votes     = []   # each vote is a plain dict
         self.audit_log = []   # each entry is a plain dict
 
-        # ── Auto-increment ID counters ───────────────────────────
+        # ── Auto-increment ID counters 
         self.candidate_id_counter = 1
         self.voter_id_counter     = 1
         self.admin_id_counter     = 2   # starts at 2 because admin id=1 is seeded
@@ -35,7 +35,7 @@ class DataStore:
         self.position_id_counter  = 1
         self.station_id_counter   = 1
 
-        # ── Eligibility constants ────────────────────────────────
+        # ── Eligibility constants 
         self.MIN_CANDIDATE_AGE = 25
         self.MAX_CANDIDATE_AGE = 75
         self.MIN_VOTER_AGE     = 18
@@ -49,7 +49,7 @@ class DataStore:
         # Seed the default admin account on first run
         self._seed_default_admin()
 
-    # ── Private helpers ──────────────────────────────────────────
+    # ── Private helpers 
 
     def _seed_default_admin(self):
         """
@@ -70,7 +70,7 @@ class DataStore:
             "is_active":  True
         }
 
-    # ── Persistence ──────────────────────────────────────────────
+    # ── Persistence 
 
     def save(self):
         """
