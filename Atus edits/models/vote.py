@@ -17,4 +17,4 @@ class Vote:
         #create a blank instance of the class without calling __init__
         obj = cls.__new__(cls)
         obj.__dict__.update(d)
-        return obj
+        return obj  
