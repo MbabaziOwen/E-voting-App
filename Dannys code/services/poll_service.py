@@ -1,9 +1,8 @@
 from typing import Dict, Any
-from .data_store import DataStore
+
 
 class PollService:
-    def __init__(self, store: DataStore):
-        self.store = store
+    
 
     def create(self, current_user: Dict[str, Any]) -> bool:
         # Exact logic from create_poll()
@@ -262,7 +261,7 @@ class PollService:
 
     def open_close(self, current_user: Dict[str, Any]) -> bool:
         # Exact logic from open_close_poll()
-        from ..e_voting_console_app import clear_screen, header, prompt, error, success, info, pause, THEME_ADMIN, GREEN, YELLOW, RED, BOLD
+        from ..e_voting_console_app import clear_screen, header, prompt, error, success, info, pause, THEME_ADMIN, GREEN, YELLOW, RED, BOLD, RESET
         
         clear_screen()
         header("OPEN / CLOSE POLL", THEME_ADMIN)

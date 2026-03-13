@@ -1,9 +1,7 @@
 from typing import Dict, Any
-from .data_store import DataStore
+
 
 class VoterService:
-    def __init__(self, store: DataStore):
-        self.store = store
 
     def view_all(self):
         # Exact logic from view_all_voters()

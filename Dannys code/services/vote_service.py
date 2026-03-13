@@ -1,9 +1,7 @@
 from typing import Dict, Any
-from .data_store import DataStore
+
 
 class VoteService:
-    def __init__(self, store: DataStore):
-        self.store = store
 
     def cast_vote(self, current_user: Dict[str, Any]) -> bool:
         # Exact logic from cast_vote() - SPECIAL TRIPLE UPDATE REQUIRED

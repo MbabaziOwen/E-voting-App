@@ -1,11 +1,9 @@
 from typing import Dict, Any
-from .data_store import DataStore
+
 import hashlib
 from datetime import datetime
 
 class AdminService:
-    def __init__(self, store: DataStore):
-        self.store = store
 
     def create(self, current_user: Dict[str, Any]) -> bool:
         # Exact logic from create_admin()
