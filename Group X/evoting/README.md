@@ -17,8 +17,34 @@ We split the work based on natural boundaries in the system:
 
 # How We Organized the Code
 Here's what our project folder looks like:
-
- * -evoting/  
+evoting/
+├── main.py                      # Entry point: initializes and runs the application
+├── storage/
+│   └── data_store.py            # Centralized data persistence layer
+├── utils/
+│   └── helpers.py               # Shared utility and helper functions
+├── models/
+│   ├── admin.py                 # Admin user data structure
+│   ├── candidate.py             # Candidate profile data structure
+│   ├── voter.py                 # Registered voter data structure
+│   ├── poll.py                  # Election/Poll configuration
+│   ├── position.py              # Election positions (e.g., President, Senator)
+│   ├── station.py               # Voting location/polling station details
+│   └── vote.py                  # Individual ballot and vote data structure
+├── services/
+│   ├── auth_service.py          # Authentication and registration logic
+│   ├── candidate_service.py     # Business logic for candidate management
+│   ├── station_service.py       # Business logic for station management
+│   ├── poll_service.py          # Management of poll lifecycles and timing
+│   ├── vote_service.py          # Core logic for casting votes and calculating results
+│   ├── voter_service.py         # Business logic for voter management
+│   └── admin_service.py         # Business logic for administrative tasks
+├── ui/
+│   ├── display.py               # UI components: formatting, colors, and layouts
+│   ├── admin_ui.py              # Screen definitions for administrative users
+│   └── voter_ui.py              # Screen definitions for voters
+└── data/
+    └── evoting_data.json        # JSON database for persistent storage  
       
    
 
