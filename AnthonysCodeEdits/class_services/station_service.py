@@ -1,11 +1,11 @@
 import datetime
-from storage.data_store import DataStore
-from ui.display import (
-    prompt, error, success, warning, info, clear_screen, pause,
-    header, subheader, menu_item, table_header, table_divider, status_badge,
-    THEME_ADMIN, THEME_ADMIN_ACCENT, RESET, BOLD, DIM
-)
-from utils.helpers import log_action
+# TODO: from storage.data_store import DataStore  # Removed folder - import DataStore class for data persistence
+# TODO: from ui.display import (  # Removed folder - import UI display functions for terminal output
+#     prompt, error, success, warning, info, clear_screen, pause,
+#     header, subheader, menu_item, table_header, table_divider, status_badge,
+#     THEME_ADMIN, THEME_ADMIN_ACCENT, RESET, BOLD, DIM
+# )
+# TODO: from utils.helpers import log_action  # Removed folder - import log_action utility function
 
 
 class StationService:

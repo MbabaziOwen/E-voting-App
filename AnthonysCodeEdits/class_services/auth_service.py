@@ -1,11 +1,11 @@
 import datetime
-from storage.data_store import DataStore
-from ui.display import (
-    prompt, masked_input, error, success, warning, info, 
-    clear_screen, pause, header, subheader, menu_item,
-    THEME_LOGIN, THEME_ADMIN, THEME_VOTER
-)
-from utils.helpers import hash_password, generate_voter_card_number, log_action
+# TODO: from storage.data_store import DataStore  # Removed folder - import DataStore class for data persistence
+# TODO: from ui.display import (  # Removed folder - import UI display functions for terminal output
+#     prompt, masked_input, error, success, warning, info, 
+#     clear_screen, pause, header, subheader, menu_item,
+#     THEME_LOGIN, THEME_ADMIN, THEME_VOTER
+# )
+# TODO: from utils.helpers import hash_password, generate_voter_card_number, log_action  # Removed folder - import utility functions
 
 
 class AuthService:
