@@ -692,6 +692,7 @@ def search_candidates():
     pause()
 
 
+
 ### voting station crud 
 def create_voting_station():
     global station_id_counter
