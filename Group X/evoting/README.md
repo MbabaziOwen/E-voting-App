@@ -136,11 +136,11 @@ python main.py
 
 ## Testing Checklist
 
-- [ ] Every folder has `__init__.py`  
-- [ ] `data/evoting_data.json` exists  
-- [ ] No global variables remain  
-- [ ] No model file contains `print()` or `input()`  
-- [ ] End-to-end workflow works:  
+-  Every folder has `__init__.py`  
+- `data/evoting_data.json` exists  
+-  No global variables remain  
+-  No model file contains `print()` or `input()`  
+-  End-to-end workflow works:  
   `create station → create poll → register voter → verify → vote → view results`
 
 ---
