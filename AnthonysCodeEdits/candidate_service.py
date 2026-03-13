@@ -7,7 +7,7 @@ wrapper signature takes an explicit ``store`` instance so that the
 substitution rule is preserved.
 """
 
-from AnthonysCodeEdits.services.candidate_service import CandidateService
+from AnthonysCodeEdits.class_services.candidate_service import CandidateService
 
 
 def create_candidate(store, current_user=None):

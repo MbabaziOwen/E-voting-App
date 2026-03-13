@@ -1,6 +1,6 @@
 """Backwards‑compatible wrappers around StationService class."""
 
-from AnthonysCodeEdits.services.station_service import StationService
+from AnthonysCodeEdits.class_services.station_service import StationService
 
 
 def create_voting_station(store, current_user=None):

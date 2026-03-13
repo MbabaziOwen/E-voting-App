@@ -4,7 +4,7 @@ Each simply invokes the `CandidateService` class in the AnthonysCodeEdits
 sub‑package so that no global state is accessed here.
 """
 
-from AnthonysCodeEdits.services.candidate_service import CandidateService
+from AnthonysCodeEdits.class_services.candidate_service import CandidateService
 
 
 def create_candidate(store, current_user=None):
